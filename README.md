@@ -95,3 +95,20 @@ No possible answer path produces a LOW or NEGATIVE diagnosis.
 - Replace `#` CTA links in `PROJECTS` with live project URLs.
 - Add legal contest terms before running the giveaway publicly.
 - The fictional-condition disclaimer is already present in the footer.
+
+
+## Logo upload
+
+Upload the approved Pristine Properties logo at:
+
+`assets/pristine-logo.png`
+
+Use that exact filename. A transparent horizontal PNG is recommended.
+
+## V2 changes
+
+- Homepage subline changed to “Find out your Rooftop Side Effect score.”
+- Symptom-detected message is centred over the questionnaire area.
+- Symptom stays visible for 3.5 seconds before the next question.
+- Result page shows both Pristine Kyra — Viman Nagar and YOO Pristine — Akurdi.
+- Each project button links directly to its pristinepune.com project page.

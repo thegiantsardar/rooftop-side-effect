@@ -26,10 +26,18 @@
   <div class="app" id="app">
     <header class="site-header">
       <a class="brand" href="#" aria-label="Pristine Properties home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>
-          <strong>Pristine</strong>
-          <small>PROPERTIES</small>
+        <img
+          class="brand-logo"
+          src="assets/pristine-logo.png"
+          alt="Pristine Properties"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+        />
+        <span class="brand-fallback" aria-hidden="true">
+          <span class="brand-mark"></span>
+          <span>
+            <strong>Pristine</strong>
+            <small>PROPERTIES</small>
+          </span>
         </span>
       </a>
 
@@ -57,9 +65,7 @@
           </h1>
 
           <p class="landing-deck">
-            What’s your Rooftop Side Effect score?
-            <br />
-            Seven questions. One incurable diagnosis.
+            Find out your Rooftop Side Effect score.
           </p>
 
           <button class="primary-cta" id="startButton" type="button">
@@ -134,16 +140,41 @@
           </div>
 
           <aside class="project-reveal" id="projectReveal">
-            <p class="project-kicker">LIKELY CAUSE OF CONDITION</p>
-            <h3 id="projectName">YOO Pristine</h3>
-            <p class="project-location" id="projectLocation">Akurdi</p>
+            <p class="project-kicker">LIKELY CAUSES OF CONDITION</p>
 
-            <div class="project-facts" id="projectFacts"></div>
+            <div class="project-list">
+              <article class="project-card">
+                <div>
+                  <h3>Pristine Kyra</h3>
+                  <p class="project-location">Viman Nagar</p>
+                </div>
+                <a
+                  class="project-cta"
+                  href="https://pristinepune.com/projects/pristine-kyra-viman-nagar"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Explore Kyra
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </article>
 
-            <a class="project-cta" id="projectCta" href="#" target="_blank" rel="noopener">
-              Experience the cause
-              <span aria-hidden="true">↗</span>
-            </a>
+              <article class="project-card">
+                <div>
+                  <h3>YOO Pristine</h3>
+                  <p class="project-location">Akurdi</p>
+                </div>
+                <a
+                  class="project-cta"
+                  href="https://pristinepune.com/projects/yoo-pristine-akurdi"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Explore YOO Pristine
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            </div>
           </aside>
         </div>
       </section>

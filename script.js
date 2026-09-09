@@ -249,10 +249,6 @@ const diagnosisValue = document.getElementById("diagnosisValue");
 const resultCopy = document.getElementById("resultCopy");
 const primarySymptom = document.getElementById("primarySymptom");
 
-const projectName = document.getElementById("projectName");
-const projectLocation = document.getElementById("projectLocation");
-const projectFacts = document.getElementById("projectFacts");
-const projectCta = document.getElementById("projectCta");
 
 const shareButton = document.getElementById("shareButton");
 const downloadCardButton = document.getElementById("downloadCardButton");
@@ -384,9 +380,9 @@ async function showSymptom(option) {
   playDing();
 
   symptomToast.classList.add("is-visible");
-  await wait(1150);
+  await wait(3500);
   symptomToast.classList.remove("is-visible");
-  await wait(220);
+  await wait(300);
 }
 
 async function chooseAnswer(optionIndex, clickedButton) {
@@ -692,5 +688,4 @@ soundToggle.addEventListener("click", toggleSound);
 shareButton.addEventListener("click", shareDiagnosis);
 downloadCardButton.addEventListener("click", downloadShareCard);
 
-setProjectContent();
 updateElevator(0);
