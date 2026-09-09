@@ -231,6 +231,8 @@ const questionText = document.getElementById("questionText");
 const questionCount = document.getElementById("questionCount");
 const floorKicker = document.getElementById("floorKicker");
 const optionsList = document.getElementById("optionsList");
+const quizStage = document.querySelector(".quiz-stage");
+const questionWrap = document.querySelector(".question-wrap");
 
 const symptomToast = document.getElementById("symptomToast");
 const symptomTitle = document.getElementById("symptomTitle");
@@ -366,11 +368,19 @@ function renderQuestion() {
     optionsList.appendChild(button);
   });
 
-  const wrap = document.querySelector(".question-wrap");
-  wrap.style.animation = "none";
-  // Force reflow so the entrance animation runs on every question.
-  void wrap.offsetWidth;
-  wrap.style.animation = "";
+  questionWrap.classList.remove("is-fading-out", "is-fading-in");
+  questionWrap.classList.add("is-before-enter");
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      questionWrap.classList.remove("is-before-enter");
+      questionWrap.classList.add("is-fading-in");
+
+      setTimeout(() => {
+        questionWrap.classList.remove("is-fading-in");
+      }, 560);
+    });
+  });
 }
 
 async function showSymptom(option) {
@@ -380,9 +390,14 @@ async function showSymptom(option) {
   playDing();
 
   symptomToast.classList.add("is-visible");
-  await wait(3500);
+
+  // Keep the symptom fully readable for a little over 3 seconds.
+  await wait(3200);
+
   symptomToast.classList.remove("is-visible");
-  await wait(300);
+
+  // Allow the symptom card to fully fade away before the next question enters.
+  await wait(500);
 }
 
 async function chooseAnswer(optionIndex, clickedButton) {
@@ -406,19 +421,33 @@ async function chooseAnswer(optionIndex, clickedButton) {
     symptom: option.symptom
   });
 
-  // Move the lift upward after each answer.
+  // 1. Let the selected answer register, then fade the current question away.
+  await wait(260);
+  questionWrap.classList.add("is-fading-out");
+  quizStage.classList.add("is-between-questions");
+  await wait(460);
+
+  // 2. Move the lift and reveal the symptom only after the question has disappeared.
   const newFloorIndex = currentQuestion + 1;
   updateElevator(newFloorIndex);
-
   await showSymptom(option);
 
   if (currentQuestion < QUESTIONS.length - 1) {
+    // 3. Render the next question only after the symptom card has completely faded.
     currentQuestion += 1;
     renderQuestion();
+
+    await wait(80);
+    quizStage.classList.remove("is-between-questions");
+
+    // Give the new question enough time to complete its fade-in.
+    await wait(560);
+
     isTransitioning = false;
     return;
   }
 
+  quizStage.classList.remove("is-between-questions");
   await finishDiagnosis();
 }
 
