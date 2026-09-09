@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3efe8" />
+  <meta
+    name="description"
+    content="The Rooftop Side Effect — an interactive diagnostic experience by Pristine Properties."
+  />
+  <title>The Rooftop Side Effect | Pristine Properties</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <div class="app" id="app">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Pristine Properties home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <strong>Pristine</strong>
+          <small>PROPERTIES</small>
+        </span>
+      </a>
+
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true">
+        <span class="sound-dot" aria-hidden="true"></span>
+        <span id="soundLabel">Sound on</span>
+      </button>
+    </header>
+
+    <main class="experience">
+      <!-- LANDING -->
+      <section class="screen screen--landing is-active" id="landingScreen">
+        <div class="landing-elevator" aria-hidden="true">
+          <div class="landing-door landing-door--left"></div>
+          <div class="landing-door landing-door--right"></div>
+          <div class="door-seam"></div>
+        </div>
+
+        <div class="landing-copy">
+          <p class="eyebrow">A DIAGNOSTIC EXPERIENCE BY PRISTINE PROPERTIES</p>
+
+          <h1>
+            The Rooftop
+            <span>Side Effect</span>
+          </h1>
+
+          <p class="landing-deck">
+            What’s your Rooftop Side Effect score?
+            <br />
+            Seven questions. One incurable diagnosis.
+          </p>
+
+          <button class="primary-cta" id="startButton" type="button">
+            <span>Call lift</span>
+            <span class="cta-arrow" aria-hidden="true">↑</span>
+          </button>
+
+          <p class="microcopy">Approx. diagnosis time: 60 seconds.</p>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="screen screen--quiz" id="quizScreen" aria-live="polite">
+        <div class="quiz-stage">
+          <div class="question-topline">
+            <p class="floor-kicker" id="floorKicker">FLOOR 01</p>
+            <p class="question-count" id="questionCount">01 / 07</p>
+          </div>
+
+          <div class="question-wrap">
+            <h2 id="questionText"></h2>
+            <div class="options" id="optionsList"></div>
+          </div>
+
+          <p class="selection-note">Choose the answer that feels most like you.</p>
+        </div>
+      </section>
+
+      <!-- RESULT -->
+      <section class="screen screen--result" id="resultScreen">
+        <div class="result-grid">
+          <div class="result-main">
+            <p class="eyebrow">YOUR ROOFTOP SIDE EFFECT</p>
+
+            <div class="score-line">
+              <span class="score-value" id="scoreValue">92</span>
+              <span class="score-percent">%</span>
+            </div>
+
+            <p class="diagnosis-label">DIAGNOSIS</p>
+            <h2 class="diagnosis-value" id="diagnosisValue">SEVERE</h2>
+
+            <p class="result-copy" id="resultCopy">
+              Your expectations have reached rooftop level.
+            </p>
+
+            <div class="prognosis">
+              <span>PROGNOSIS</span>
+              <strong>There is no known cure.</strong>
+              <p>Fortunately, there’s no need for one.</p>
+            </div>
+
+            <div class="primary-symptom">
+              <span>PRIMARY SYMPTOM</span>
+              <strong id="primarySymptom">Skyline Attachment</strong>
+            </div>
+
+            <div class="result-actions">
+              <button class="primary-cta" id="shareButton" type="button">
+                <span>Share diagnosis</span>
+                <span class="cta-arrow" aria-hidden="true">↗</span>
+              </button>
+
+              <button class="secondary-cta" id="downloadCardButton" type="button">
+                Download share card
+              </button>
+            </div>
+
+            <p class="contest-copy">
+              Share your diagnosis and stand a chance to win an exciting getaway.
+            </p>
+          </div>
+
+          <aside class="project-reveal" id="projectReveal">
+            <p class="project-kicker">LIKELY CAUSE OF CONDITION</p>
+            <h3 id="projectName">YOO Pristine</h3>
+            <p class="project-location" id="projectLocation">Akurdi</p>
+
+            <div class="project-facts" id="projectFacts"></div>
+
+            <a class="project-cta" id="projectCta" href="#" target="_blank" rel="noopener">
+              Experience the cause
+              <span aria-hidden="true">↗</span>
+            </a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- ELEVATOR PROGRESS PANEL -->
+    <aside class="elevator-panel" id="elevatorPanel" aria-label="Survey progress">
+      <div class="elevator-display" aria-live="polite">
+        <span class="display-arrow" id="displayArrow">↑</span>
+        <span class="display-text" id="displayText">GROUND</span>
+      </div>
+
+      <div class="floor-stack">
+        <div class="floor-row" data-floor="R">
+          <span class="floor-led"></span>
+          <span class="floor-button">R</span>
+        </div>
+        <div class="floor-row" data-floor="6">
+          <span class="floor-led"></span>
+          <span class="floor-button">6</span>
+        </div>
+        <div class="floor-row" data-floor="5">
+          <span class="floor-led"></span>
+          <span class="floor-button">5</span>
+        </div>
+        <div class="floor-row" data-floor="4">
+          <span class="floor-led"></span>
+          <span class="floor-button">4</span>
+        </div>
+        <div class="floor-row" data-floor="3">
+          <span class="floor-led"></span>
+          <span class="floor-button">3</span>
+        </div>
+        <div class="floor-row" data-floor="2">
+          <span class="floor-led"></span>
+          <span class="floor-button">2</span>
+        </div>
+        <div class="floor-row" data-floor="1">
+          <span class="floor-led"></span>
+          <span class="floor-button">1</span>
+        </div>
+        <div class="floor-row is-current" data-floor="G">
+          <span class="floor-led"></span>
+          <span class="floor-button">G</span>
+        </div>
+      </div>
+
+      <div class="elevator-caption">
+        <span>R.S.E.</span>
+        <small>DIAGNOSTIC LIFT</small>
+      </div>
+    </aside>
+
+    <!-- SYMPTOM TOAST -->
+    <div class="symptom-toast" id="symptomToast" role="status" aria-live="polite">
+      <span class="toast-kicker">SYMPTOM DETECTED</span>
+      <strong id="symptomTitle">Skyline Attachment</strong>
+      <p id="symptomNote">Your standards for ordinary views may be rising.</p>
+    </div>
+
+    <!-- FINAL DOOR TRANSITION -->
+    <div class="transition-doors" id="transitionDoors" aria-hidden="true">
+      <div class="transition-door transition-door--left"></div>
+      <div class="transition-door transition-door--right"></div>
+
+      <div class="analysis-copy" id="analysisCopy">
+        <p class="analysis-kicker">ROOFTOP REACHED</p>
+        <h2>Analysing exposure…</h2>
+        <p id="analysisLine">Checking rooftop dependence.</p>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>© Pristine Properties</span>
+      <span>
+        The Rooftop Side Effect is a fictional condition created as part of a Pristine Properties campaign.
+      </span>
+    </footer>
+  </div>
+
+  <canvas id="shareCanvas" width="1080" height="1920" hidden></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
